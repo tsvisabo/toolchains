@@ -1,3 +1,5 @@
+load("//tools/emscripten:defs.bzl", "emcc_binary")
+
 cc_binary(
     name = "hello",
     srcs = ["hello.c"],
@@ -12,8 +14,6 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
-load("//tools/emscripten:defs.bzl", "emcc_binary")
-
 emcc_binary(
     name = "hi.js",
     srcs = [
@@ -23,4 +23,7 @@ emcc_binary(
     #List of functions you would like to be able to wrap/cal from JS
     #Please note that function name should be prefixed with _
     linkopts = ["-s EXPORTED_FUNCTIONS='[\"_hi\"]'"],
+
+    #to export all
+    #linkopts = ["-s LINKABLE=1 -s EXPORT_ALL=1"],
 )

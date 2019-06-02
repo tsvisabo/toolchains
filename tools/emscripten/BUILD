@@ -5,7 +5,7 @@ exports_files(["test.sh"])
 load(":cc_toolchain_config.bzl", "cc_toolchain_config")
 
 cc_toolchain_suite(
-    name = "emscripten",
+    name = "toolchain",
     toolchains = {
         "emscripten": "emscripten_toolchain",
     },

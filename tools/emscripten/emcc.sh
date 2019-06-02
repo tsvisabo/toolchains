@@ -72,6 +72,3 @@ if [ "x$tarfile" != x ]; then
       tar cvf $tarfile $sources
   )
 fi
-
-
-# rm -r tmp

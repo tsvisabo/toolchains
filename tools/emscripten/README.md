@@ -2,17 +2,20 @@
 
 Transpile command:
 ```
-bazel build --define=workspace=$(bazel info workspace)  --define=output_base=$(bazel info output_base) --crosstool_top=//tools/emscripten:emscripten --config='emscripten'  //tests:hi.js
+bazel build --define=workspace=$(bazel info workspace)  --define=output_base=$(bazel info output_base)  --config='emscripten'  //tests:hi.js
 ```
 
 ##How to create a target
-Add "emcc_binary" rule defined in "defs.bzl" to create a "js" and "wasm" file
+Add "emcc_binary" rule defined in "defs.bzl" to create a ".js" and ".wasm" file
 
 ##How to consume js files
 
 One option at least is to create one js module that wrap and export the functions 
-that was already exported via the emcc_binary (using linker flag "-s EXPORTED_FUNCTIONS=[]")
+that was already exported via the emcc_binary
 And another that calls them
+
+In emcc_binary, make sure to set `linkopts = ["-s LINKABLE=1 -s EXPORT_ALL=1"]`
+to export to the .js file all functions in compiled module or `linkopts = ["-s EXPORTED_FUNCTIONS='[\"_func_name\"]'"]`
 
 ###hi_wrapper.js
 ```

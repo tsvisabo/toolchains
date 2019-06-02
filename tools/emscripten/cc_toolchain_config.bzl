@@ -156,6 +156,7 @@ def _impl(ctx):
                             "-fstack-protector",
                             "-fPIE",
                             "-fdiagnostics-color=always",
+                            "-no-canonical-prefixes",
                         ],
                     ),
                 ],
