@@ -11,3 +11,16 @@ cc_library(
     #    includes = [".",],
     visibility = ["//visibility:public"],
 )
+
+load("//tools/emscripten:defs.bzl", "emcc_binary")
+
+emcc_binary(
+    name = "hi.js",
+    srcs = [
+        "hi.c",
+        "hi.h",
+    ],
+    #List of functions you would like to be able to wrap/cal from JS
+    #Please note that function name should be prefixed with _
+    linkopts = ["-s EXPORTED_FUNCTIONS='[\"_hi\"]'"],
+)

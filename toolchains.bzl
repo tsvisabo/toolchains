@@ -45,3 +45,25 @@ def setup_toolchains():
         strip_prefix = "xtensa-esp32-elf",
         url = "https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz",
     )
+
+    #emscripten
+    http_archive(
+        name = "emscripten_toolchain",
+        build_file = "//tools/emscripten:emscripten-toolchain.BUILD",
+        strip_prefix = "emscripten-1.38.31",
+        url = "https://github.com/kripken/emscripten/archive/1.38.31.tar.gz",
+    )
+
+    http_archive(
+        name = "emscripten_clang",
+        build_file = "//tools/emscripten:emscripten-clang.BUILD",
+        strip_prefix = "emscripten-llvm-e1.38.31",
+        url = "https://s3.amazonaws.com/mozilla-games/emscripten/packages/llvm/tag/linux_64bit/emscripten-llvm-e1.38.31.tar.gz",
+    )
+
+    #emscripten deps
+    http_archive(
+        name = "build_bazel_rules_nodejs",
+        sha256 = "1db950bbd27fb2581866e307c0130983471d4c3cd49c46063a2503ca7b6770a4",
+        urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/0.29.0/rules_nodejs-0.29.0.tar.gz"],
+    )
