@@ -52,9 +52,3 @@ Generally, it is better to follow  emscripten documentation:
 [calling functions with emscripten](https://emscripten.org/docs/porting/connecting_cpp_and_javascript/Interacting-with-code.html#interacting-with-code-ccall-cwrap
 )
 
-
-
-
-
-
-
