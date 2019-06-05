@@ -33,7 +33,7 @@ module.exports = {
 
 ```
 
-###example.js 
+### example.js  
 
 ```
 'use strict'
