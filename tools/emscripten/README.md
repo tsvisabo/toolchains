@@ -17,7 +17,7 @@ And another that calls them
 In emcc_binary, make sure to set `linkopts = ["-s LINKABLE=1 -s EXPORT_ALL=1"]`
 to export to the .js file all functions in compiled module or `linkopts = ["-s EXPORTED_FUNCTIONS='[\"_func_name\"]'"]`
 
-###hi_wrapper.js
+### hi_wrapper.js  
 ```
 'use strict'
 
