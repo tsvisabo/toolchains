@@ -8,7 +8,7 @@ bazel build --define=workspace=$(bazel info workspace)  --define=output_base=$(b
 ## How to create a target  
 Add "emcc_binary" rule defined in "defs.bzl" to create a ".js" and ".wasm" file
 
-##How to consume js files
+## How to consume js files  
 
 One option at least is to create one js module that wrap and export the functions 
 that was already exported via the emcc_binary
