@@ -5,7 +5,7 @@ Transpile command:
 bazel build --define=workspace=$(bazel info workspace)  --define=output_base=$(bazel info output_base)  --config='emscripten'  //tests:hi.js
 ```
 
-##How to create a target
+## How to create a target  
 Add "emcc_binary" rule defined in "defs.bzl" to create a ".js" and ".wasm" file
 
 ##How to consume js files
