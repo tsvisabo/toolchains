@@ -23,6 +23,7 @@ filegroup(
     srcs = [
         "emar.sh",
         "emcc.sh",
+        "emenv.sh",
         ":emscripten_cache_content",
         "@emscripten_clang//:all",
         "@emscripten_toolchain//:all",
@@ -32,7 +33,7 @@ filegroup(
 
 filegroup(
     name = "emscripten_cache_content",
-    srcs = glob(["emscripten_cache/**/*"]),
+    srcs = glob(["~/.emscripten_cache/**/*"]),
 )
 
 cc_toolchain(

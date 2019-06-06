@@ -1,8 +1,18 @@
 # IOTA toolchains - emscripten
 
-Transpile command:
+## Setup Emscripten compiler  
+Install Emscripten - https://emscripten.org/docs/getting_started/downloads.html  
+You need to prepare emscripten caches, it will take some times to get ready.  
+
+```shell
+$ source emsdk_env.sh
+$ embuilder.py build ALL
 ```
-bazel build --define=workspace=$(bazel info workspace)  --define=output_base=$(bazel info output_base)  --config='emscripten'  //tests:hi.js
+
+## Transpile command:  
+
+```shell
+$ bazel build --define=workspace=$(bazel info workspace)  --define=output_base=$(bazel info output_base)  --config='emscripten'  //tests:hi.js
 ```
 
 ## How to create a target  
@@ -17,38 +27,29 @@ And another that calls them
 In emcc_binary, make sure to set `linkopts = ["-s LINKABLE=1 -s EXPORT_ALL=1"]`
 to export to the .js file all functions in compiled module or `linkopts = ["-s EXPORTED_FUNCTIONS='[\"_func_name\"]'"]`
 
-### hi_wrapper.js  
-```
+### Testing  
+
+Creates `example.js` as following:  
+
+```javascript
 'use strict'
 
-let Module = require('./hi.js')
+let Module = require('./bazel-bin/tests/hi.js')
 
-var hi = Module.cwrap('hi', 'null', []);
-
-module.exports = {
-  hi: hi,
-  Module: Module
-}
-
-
-```
-
-### example.js  
-
-```
-'use strict'
-
-let a = require('./hi_wrapper.js')
-
-a.Module.onRuntimeInitialized = function() {
-  a.hi()
+Module.onRuntimeInitialized = _ => {
+    const say_hi = Module.cwrap('hi', 'null', []);
+    say_hi();
 }
 
 ```
 
+Running the example  
 
-Generally, it is better to follow  emscripten documentation:
+```shell
+$ node example.js
+Hi there!!
+```
 
+Generally, it is better to follow  emscripten documentation:  
 [calling functions with emscripten](https://emscripten.org/docs/porting/connecting_cpp_and_javascript/Interacting-with-code.html#interacting-with-code-ccall-cwrap
-)
-
+)  
