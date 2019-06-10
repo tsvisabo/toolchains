@@ -63,7 +63,7 @@ def setup_toolchains():
         sha256 = "a0c2f2c5a897577f40af0fdf68dcf3cf65557ff20c081df26678c066a4fed4b1",
     )
 
-def setup_nodejs():
+def setup_initial_deps():
     http_archive(
         name = "build_bazel_rules_nodejs",
         sha256 = "1db950bbd27fb2581866e307c0130983471d4c3cd49c46063a2503ca7b6770a4",
