@@ -1,9 +1,9 @@
 workspace(name = "iota_toolchains")
 
-load("//:toolchains.bzl", "setup_toolchains_deps")
+load("//:toolchains.bzl", "setup_nodejs")
 
-setup_toolchains_deps()
+setup_nodejs()
 
-load("@iota_toolchains//:defs.bzl", "load_repositoreis")
+load("@iota_toolchains//:defs.bzl", "setup_toolchains_repositories")
 
-load_repositoreis()
+setup_toolchains_repositories()
