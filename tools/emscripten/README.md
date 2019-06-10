@@ -1,18 +1,9 @@
 # IOTA toolchains - emscripten
 
-## Setup Emscripten compiler  
-Install Emscripten - https://emscripten.org/docs/getting_started/downloads.html  
-You need to prepare emscripten caches, it will take some times to get ready.  
-
-```shell
-$ source emsdk_env.sh
-$ embuilder.py build ALL
-```
-
 ## Transpile command:  
 
 ```shell
-$ bazel build --define=workspace=$(bazel info workspace)  --define=output_base=$(bazel info output_base)  --config='emscripten'  //tests:hi.js
+$ bazel build --spawn_strategy=local --define=workspace=$(bazel info workspace)  --define=output_base=$(bazel info output_base)  --config='emscripten'  //tests:hi.js
 ```
 
 ## How to create a target  
