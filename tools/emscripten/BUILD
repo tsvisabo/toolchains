@@ -27,7 +27,6 @@ filegroup(
         ":emscripten_cache_content",
         "@emscripten_clang//:all",
         "@emscripten_toolchain//:all",
-        "@nodejs//:bin/nodejs/bin/node",
     ] + glob(["*.h"]),
 )
 
